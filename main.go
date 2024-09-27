@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -21,12 +22,10 @@ func main() {
 	if err := os.MkdirAll(processedDir, os.ModePerm); err != nil {
 		log.Fatal(err)
 	}
-
-	// Define routes
+	fmt.Println("Howdy!, Welcome to WoafMeow Image Processor!")
 	http.HandleFunc("/upload", handlers.UploadImageHandler)
 	http.HandleFunc("/download/", handlers.DownloadImageHandler)
 
-	// Start the server
 	log.Println("Server started at :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

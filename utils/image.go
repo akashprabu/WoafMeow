@@ -11,7 +11,6 @@ import (
 
 // RotateImage rotates the given image and saves it to a new file
 func RotateImage(inputPath, outputPath string) error {
-	// Open the input image file
 	imgFile, err := os.Open(inputPath)
 	if err != nil {
 		fmt.Println("Error opening image file:", err)
@@ -19,17 +18,14 @@ func RotateImage(inputPath, outputPath string) error {
 	}
 	defer imgFile.Close()
 
-	// Decode the image
 	img, _, err := image.Decode(imgFile)
 	if err != nil {
 		fmt.Println("Error decoding image:", err)
 		return err
 	}
 
-	// Rotate the image 90 degrees clockwise
 	rotatedImg := rotate90Degrees(img)
 
-	// Create the output file
 	processedFile, err := os.Create(outputPath)
 	if err != nil {
 		fmt.Println("Error creating processed image file:", err)
@@ -37,7 +33,6 @@ func RotateImage(inputPath, outputPath string) error {
 	}
 	defer processedFile.Close()
 
-	// Save the processed image as JPEG
 	err = jpeg.Encode(processedFile, rotatedImg, nil)
 	if err != nil {
 		fmt.Println("Error encoding processed image:", err)
@@ -59,5 +54,5 @@ func rotate90Degrees(img image.Image) image.Image {
 		}
 	}
 
-	return resize.Resize(500, 500, rotated, resize.Lanczos3) // Optionally resize
+	return resize.Resize(500, 500, rotated, resize.Lanczos3)
 }
