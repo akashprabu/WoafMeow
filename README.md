@@ -1,4 +1,4 @@
-# WoafMeow Image Processing API
+# WoafMeow Image Processor API
 
 ## Overview
 WoafMeow Image Processor is a simple API service that allows users to upload an image, processes it by rotating 90 degree, and then allows users to download the processed image. The API is built using Go and is structured in a modular way for better organization and maintainability.
