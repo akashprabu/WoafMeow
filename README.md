@@ -60,7 +60,7 @@ WoafMeow/
 - **Method**: `GET`
 - **Request**:
   ```bash
-  curl -O http://localhost:8080/download/processed_image_name.jpg
+  curl -O http://localhost:8080/download/processed_image.jpg
   ```
 - **Response**: The processed image file will be downloaded.
 

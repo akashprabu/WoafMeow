@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"time"
 
 	"WoafMeow/utils"
 )
@@ -33,7 +32,7 @@ func UploadImageHandler(w http.ResponseWriter, r *http.Request) {
 	defer file.Close()
 
 	// Create a unique file name for the uploaded image
-	fileName := fmt.Sprintf("uploaded_image_%d.jpg", time.Now().UnixNano())
+	fileName := "uploaded_image.jpg"
 	filePath := filepath.Join("./uploads", fileName)
 
 	outFile, err := os.Create(filePath)
@@ -49,6 +48,7 @@ func UploadImageHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fileName = "processed_image.jpg"
 	processedPath := filepath.Join("./processed", fileName)
 	err = utils.RotateImage(filePath, processedPath)
 	if err != nil {
